@@ -24,6 +24,8 @@ cloud-provider-kind
 
 ## Access to Clusters
 
+### From your CLI
+
 Get the kubeconfigs:
 
 ```bash
@@ -42,4 +44,14 @@ Change permanent:
 
 ```bash
 export KUBECONFIG=~/.kube/cluster-a.yaml
+```
+
+### From another Cluster
+
+The endpoints of the API-Server are available with their FQDN:
+
+```bash
+curl -k https://cluster-a-control-plane:6443/healthz
+curl -k https://cluster-b-control-plane:6443/healthz
+curl -k https://cluster-c-control-plane:6443/healthz
 ```
