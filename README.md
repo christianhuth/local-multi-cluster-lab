@@ -24,8 +24,22 @@ cloud-provider-kind
 
 ## Access to Clusters
 
+Get the kubeconfigs:
+
 ```bash
-kind get kubeconfig --name cluster-a > ~/.kubeconfig/cluster-a.yaml
-kind get kubeconfig --name cluster-b > ~/.kubeconfig/cluster-b.yaml
-kind get kubeconfig --name cluster-c > ~/.kubeconfig/cluster-c.yaml
+kind get kubeconfig --name cluster-a > ~/.kube/cluster-a.yaml
+kind get kubeconfig --name cluster-b > ~/.kube/cluster-b.yaml
+kind get kubeconfig --name cluster-c > ~/.kube/cluster-c.yaml
+```
+
+Point kubectl to use one of the kubeconfigs:
+
+```bash
+KUBECONFIG=~/.kube/cluster-a.yaml kubectl get nodes
+```
+
+Change permanent:
+
+```bash
+export KUBECONFIG=~/.kube/cluster-a.yaml
 ```
